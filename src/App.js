@@ -22,7 +22,7 @@ function App() {
       {/* {!hideHeader && <Header />} */}
       <Routes>
         {/* <Route path="/" element={<Home />}></Route> */}
-        <Route path="/signin" element={<Signin />}></Route>
+        <Route path="/" element={<Signin />}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/inventory" element={<Inventory />}></Route>
         <Route path="/account" element={<Account />}></Route>

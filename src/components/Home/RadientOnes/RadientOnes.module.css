@@ -1,0 +1,65 @@
+.header {
+  display: flex;
+  gap: 20px;
+}
+.wrapper {
+  border-radius: 8px;
+  background: #c96c0f;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 237px;
+}
+.riderImage {
+  display: block;
+  width: 58px;
+}
+.title {
+  color: #fff;
+  font-family: Alfa Slab One;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.tagline {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.highlight {
+  color: #222335;
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media only screen and (max-width: 520px) {
+  .wrapper {
+    padding: 24px 15px;
+    min-height: 200px;
+    gap: 18px;
+  }
+  .header {
+    gap: 6px;
+  }
+  .title {
+    font-size: 36px;
+  }
+  .tagline {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .wrapper {
+    padding: 24px 15px;
+  }
+  .title {
+    font-size: 29px;
+  }
+  .tagline {
+    font-size: 16px;
+  }
+}

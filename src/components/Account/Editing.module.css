@@ -1,0 +1,91 @@
+.wrapper {
+  max-width: 1005px;
+  padding: 18px;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 16px;
+  background: #101123;
+  padding: 10%;
+  position: relative;
+}
+.editContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  cursor: pointer;
+}
+.icon {
+  font-size: 24px;
+  color: #fff;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 525px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.label {
+  color: #fff;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.input {
+  color: #101123;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 4px;
+  background: #f9f9f9;
+  border: none;
+  outline: none;
+}
+.button {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  border-radius: 40px;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  max-width: 209px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--g, linear-gradient(0deg, #5e56ef 0%, #342eaf 100%));
+  margin: 0 auto;
+}
+@media only screen and (max-width: 575px) {
+  .form {
+    gap: 22px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .wrapper {
+    padding: 7%;
+  }
+}

@@ -1,0 +1,51 @@
+.allRider {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px 15px;
+}
+.rider {
+  border-radius: 8px;
+  background: #222335;
+
+  padding: 15px;
+}
+.image {
+  width: 100%;
+}
+.height {
+  min-height: 150px;
+}
+@media only screen and (max-width: 1399px) {
+  .allRider {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 991px) {
+  .allRider {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .height {
+    min-height: 150px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .height {
+    min-height: 100px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .height {
+    min-height: 90px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .allRider {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .height {
+    min-height: 120px;
+  }
+}

@@ -1,0 +1,141 @@
+.wrapper {
+  border: 8px solid #342eaf;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 14px;
+  background-color: #1a1b3a;
+  height: 100%;
+}
+
+.headingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.heading {
+  color: #fff;
+  font-family: Alfa Slab One;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  background: #feae34;
+  padding: 8px;
+}
+.inventoryHeading {
+  background: #c96c0f;
+}
+.subHeading {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: #101123;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 8px;
+  width: 100%;
+}
+.itemsContainer {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; */
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(48.948px, 1fr));
+  gap: 5px;
+  padding: 15px;
+  background: #0d0e12;
+  width: 100%;
+}
+.box {
+  background: #383a5c;
+
+  height: 48.948px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.value {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+}
+.amountAndconfirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  width: 100%;
+}
+.amount {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 8px;
+  background: #383a5c;
+  width: 100%;
+}
+
+.button {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  border-radius: 40px;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  max-width: 209px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 7px 0;
+}
+.confirmButton {
+  background: var(--g, linear-gradient(0deg, #5e56ef 0%, #342eaf 100%));
+}
+
+.cancelButton {
+  background: linear-gradient(0deg, #ec1d25 0%, #ff5056 100%);
+  transform: translateY(40px);
+  margin: 0 auto;
+}
+@media only screen and (max-width: 520px) {
+  .heading {
+    font-size: 28px;
+  }
+  .subHeading {
+    font-size: 18px;
+  }
+  .button {
+    font-size: 18px;
+  }
+}

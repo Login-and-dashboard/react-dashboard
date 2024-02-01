@@ -1,0 +1,129 @@
+.sidebar {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  border-right: 1px solid #21233e;
+  background: #101123;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  max-width: 328px;
+  width: 100%;
+  z-index: 5;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 40px;
+  padding-bottom: 24px;
+}
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 199px;
+}
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 55px;
+  padding: 0 40px;
+  padding-top: 20px;
+  height: 100%;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.navItem {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 168.75%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.supportAndSocial {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.support {
+  border-top: 1px solid #383a5c;
+  border-bottom: 1px solid #383a5c;
+  padding: 12px 0;
+}
+.navActive {
+  font-weight: 700;
+
+  border-radius: 6px;
+  color: #feae34;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #cacaca rgba(250, 250, 250, 0.2);
+}
+/* For Firefox */
+/* For Firefox */
+
+/* Chrome, Edge, and Safari */
+.sidebar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(250, 250, 250, 0.2);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #cacaca;
+  border-radius: 100%;
+  border: none;
+}
+@media only screen and (max-width: 1199px) {
+  .sidebar {
+    transform: translateX(-150%);
+    transition: 0.3s;
+    left: 0;
+  }
+  .showSidebar {
+    transform: translateX(0%);
+
+    transition: 0.3s;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .sidebar {
+    width: 250px;
+  }
+  .navContainer {
+    padding: 0 25px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .logo {
+    width: 130px;
+  }
+}

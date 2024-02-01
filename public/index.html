@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+
+    <title>React App</title>
+
+    <!-- font awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <!-- box-icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- bootstrap cdn link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="css/plugins/video-player.css" /> -->
+    <!-- owl carousel link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/owl.carousel2@2.2.2/dist/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick-theme.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"
+    />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+      integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+      crossorigin="anonymous"
+    ></script>
+    <!-- owl carousel js -->
+    <script src="https://cdn.jsdelivr.net/npm/owl.carousel2@2.2.2/dist/owl.carousel.min.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+    <script>
+      var tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      var player;
+
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("player", {
+          height: "315",
+          width: "560",
+          videoId: "pWfYG2AxDU4",
+          playerVars: {
+            color: "white",
+            showinfo: 0,
+            rel: 0,
+            enablejsapi: 1,
+            modestbranding: 1,
+            showinfo: 0,
+            ecver: 2,
+          },
+          events: {
+            onStateChange: onPlayerStateChange,
+            onReady: function () {
+              $(".ytp-expand-pause-overlay .ytp-pause-overlay").css(
+                "display",
+                "none"
+              );
+              $(".video-thumb").click(function () {
+                console.log("clicked");
+                var $this = $(this);
+                if (!$this.hasClass("active")) {
+                  player.loadVideoById($this.attr("data-video"));
+                  $(".video-thumb").removeClass("active");
+                  $this.addClass("active");
+                }
+              });
+            },
+          },
+        });
+        function onPlayerStateChange(e) {
+          console.log("state");
+          if (e.data == YT.PlayerState.ENDED) {
+            document.getElementById("playerWrap").classList.add("shown");
+          }
+        }
+        // document
+        //   .getElementById("playerWrap")
+        //   .addEventListener("click", function () {
+        //     player.seekTo(0);
+        //     document.getElementById("playerWrap").classList.remove("shown");
+        //   });
+      }
+
+      (function ($) {
+        $(document).ready(function () {
+          $(".owl-carousel").owlCarousel({
+            loop: false,
+            margin: 10,
+            nav: true,
+            navText: [
+              "<i class='fas fa-chevron-left'></i>",
+              "<i class='fas fa-chevron-right'></i>",
+            ],
+            autoplay: false,
+            autoplayHoverPause: true,
+            responsive: {
+              0: {
+                items: 3,
+              },
+              600: {
+                items: 4,
+              },
+              1000: {
+                items: 5,
+              },
+            },
+          });
+        });
+      })(jQuery);
+
+      jQuery(document).ready(
+        (function ($) {
+          function scrollToSection(event) {
+            event.preventDefault();
+            var $section = $($(this).attr("href"));
+            $("html, body").animate(
+              {
+                scrollTop: $section.offset().top,
+              },
+              500
+            );
+          }
+          $(".onclick").on("click", scrollToSection);
+
+          $(".slick-carousel").slick({
+            speed: 5000,
+            autoplay: true,
+            autoplaySpeed: 0,
+            cssEase: "linear",
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            infinite: true,
+            swipeToSlide: true,
+            centerMode: true,
+            focusOnSelect: true,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 5,
+                },
+              },
+              {
+                breakpoint: 992,
+                settings: {
+                  slidesToShow: 3,
+                },
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+              {
+                breakpoint: 475,
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+            ],
+          });
+        })(jQuery)
+      );
+    </script>
+    <script>
+      // custom hamburger toggle
+      function display_menu() {
+        var nav_container = document.querySelector(".nav-container");
+        !nav_container.classList.contains("display_menu")
+          ? nav_container.classList.add("display_menu")
+          : nav_container.classList.remove("display_menu");
+      }
+    </script>
+  </body>
+</html>

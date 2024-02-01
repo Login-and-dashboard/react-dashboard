@@ -1,0 +1,151 @@
+.headerWrapper {
+  background: #101123;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  padding-left: calc(328px + 30px);
+  padding: 30px;
+  border-bottom: 1px solid #202241;
+}
+.header {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+.doc {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 168.75%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+.ellipse {
+  width: 40px;
+}
+
+.dropDownIcon {
+  color: #fbbe18;
+}
+.userContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+.userImage {
+  width: 40px;
+  border-radius: 50%;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+.userNameAndId,
+.address,
+.dropdownItem {
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+.address {
+  color: #3e406c;
+}
+.dropDownContainer {
+  border-radius: 8px;
+  background: #222335;
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  right: 0;
+  padding: 10px 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dropdownItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #3b3d55;
+  padding: 7px 0;
+  cursor: pointer;
+}
+.dropdownItem:last-child {
+  border: none;
+}
+.rightArrow {
+  font-size: 20px;
+  color: #fff;
+}
+.hamburger,
+.close {
+  color: #fafafa;
+  font-size: 28px;
+  display: none;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1199px) {
+  .hamburger,
+  .close {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header {
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .doc {
+    gap: 3px;
+  }
+
+  .ellipse {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .headerWrapper {
+    height: auto;
+    padding: 24px 20px;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 18px;
+  }
+  .userContainer {
+    order: 1;
+    margin-left: auto;
+    grid-column: 1/3;
+  }
+  .doc {
+    order: 2;
+  }
+  .hamburger,
+  .close {
+    margin-left: auto;
+    order: 3;
+  }
+}

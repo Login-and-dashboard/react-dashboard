@@ -44,7 +44,7 @@ const Login = () => {
       redirect: 'follow'
     };
 
-    await fetch("http://localhost:8443/v1/account/updatenft", requestOptions);
+    await fetch("http://3.236.246.13:8443/v1/account/updatenft", requestOptions);
     setLoggedIn(true);
   }, [usableNfts, accessToken, setLoggedIn])
 

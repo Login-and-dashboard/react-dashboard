@@ -1,13 +1,53 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { BiScan } from "react-icons/bi";
+import React, { useCallback, useMemo, useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
-import { logo, xidarWallet, zuesWallet } from "../../images/image";
+import { ConnectButton } from "../../components/ConnectButton/ConnectButton";
+import { logo } from "../../images/image";
 import styles from "./SignIn.module.css";
+import { useAccounts } from "../../hooks/useAccounts";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
+  const {
+    refresh,
+    state: { accounts, status, hasLoaded: hasAccountsLoaded },
+  } = useAccounts()
+  const { search } = useLocation();
+  const accessToken = search.substring(7);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const nfts = useMemo(() => {
+    const addr = "resource_tdx_2_1n23hu0ff96fuxhjlu9y6agtmufxhra4835xlx3p752pvlk7skhqg87";
+    if (accounts.length && accounts[0].nonFungibleTokens && accounts[0].nonFungibleTokens[addr]) {
+      return accounts[0].nonFungibleTokens[addr];
+    }
+    return [];
+  }, [accounts])
+
+  const usableNfts = useMemo(() => {
+    return nfts.filter((nft) => !!nft.data.programmatic_json.fields.find(field => field.field_name === "usable").value);
+  }, [nfts]);
+
+  const login = useCallback(async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("token", accessToken);
+    urlencoded.append("nftId", usableNfts[0].non_fungible_id.substring(1, usableNfts[0].non_fungible_id.length - 1));
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+
+    await fetch("http://localhost:8443/v1/account/updatenft", requestOptions);
+    setLoggedIn(true);
+  }, [usableNfts, accessToken, setLoggedIn])
+
   return (
     <section className={styles.mainWrapper}>
       <img src={logo} alt="#" className={styles.logo} />
@@ -17,37 +57,26 @@ const Login = () => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.walletContainer}>
-            <button
-              onClick={() => navigate("/dashboard")}
-              className={[styles.button, styles.connectWallet].join(" ")}
-            >
-              {" "}
-              <img src={zuesWallet} alt="#" className={styles.icon} /> Log in
-              with Zues Wallet
-            </button>{" "}
-            <button
-              onClick={() => navigate("/dashboard")}
-              className={[styles.button, styles.connectWallet].join(" ")}
-            >
-              {" "}
-              <img src={xidarWallet} alt="#" className={styles.icon} /> Log in
-              with Xidar Wallet
-            </button>
+            {!loggedIn ? <> <ConnectButton />
+              <p className={styles.text}>
+                {accounts.length ? `Found ${nfts.length} FiatFighterZ NFTs with ${usableNfts.length} usable NFTs` : ""}
+              </p>
+              {(usableNfts.length && !accessToken.length) ? <button
+                onClick={() => { }}
+                className={[styles.button, styles.connectWallet].join(" ")}
+              >
+                Download Game
+              </button> : <></>}
+              {(usableNfts.length && accessToken.length) ? <button
+                onClick={() => { login(); }}
+                className={[styles.button, styles.connectWallet].join(" ")}
+              >
+                Login
+              </button> : <></>}</> : <p className={styles.text}>
+              Logged in success. Please return to your game
+            </p>}
           </div>
           <div className={styles.scanAndInfo}>
-            <button
-              onClick={() => navigate("/dashboard")}
-              className={[styles.button, styles.scanQrCode].join(" ")}
-            >
-              <div className={styles.scanIconContainer}>
-                <BiScan className={styles.scanIcon} />
-              </div>
-              <span> Log in by QR Code</span>
-            </button>
-            <p className={styles.text}>
-              <AiOutlineInfoCircle /> By continuing you agree to our Terms of
-              use
-            </p>
             <p className={styles.line} />
             <p className={styles.text}>
               Don’t know where to start? Getting Started

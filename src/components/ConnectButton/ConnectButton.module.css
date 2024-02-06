@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  --radix-connect-button-border-radius: 8px;
+  --radix-connect-button-width: 379px;
+  --radix-connect-button-height: 55px;
+  align-items: center;
+}
+
+.hero {
+  text-align: center;
+}
+
+.radix-connect-button {
+  position: relative;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.connect-arrow {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: calc(100% - 50%);
+}
+
+@media screen and (max-width: 1170px) {
+  .connect-arrow {
+    display: none;
+  }
+}
+
+.alert {
+  max-width: 54rem;
+  margin-top: 3rem;
+}
+
+.tooltip {
+  position: absolute;
+  width: 26rem;
+  top: 3.4rem;
+  z-index: 1;
+  right: 0;
+}

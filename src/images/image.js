@@ -1,4 +1,4 @@
-import logo from "./RadiantRealms-Logo.png";
+import logo from "./logo.png";
 import userImage from "./userImage.png";
 import ellipse from "./ellipse.png";
 import rider from "./riderImage.png";

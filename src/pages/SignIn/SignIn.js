@@ -44,7 +44,7 @@ const Login = () => {
       redirect: 'follow'
     };
 
-    await fetch("http://3.234.74.113:8443/v1/account/updatenft", requestOptions);
+    await fetch("https://snapper-fit-snipe.ngrok-free.app/v1/account/updatenft", requestOptions);
     setLoggedIn(true);
   }, [usableNfts, accessToken, setLoggedIn])
 

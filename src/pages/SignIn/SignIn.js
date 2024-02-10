@@ -61,7 +61,7 @@ const Login = () => {
               <p className={styles.text}>
                 {accounts.length ? `Found ${nfts.length} FiatFighterZ NFTs with ${usableNfts.length} usable NFTs` : ""}
               </p>
-              {(usableNfts.length && !accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/FiatFighter.zip"><button
+              {(usableNfts.length && !accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/FiatFighterz.zip"><button
                 className={[styles.button, styles.connectWallet].join(" ")}
               >
                 Download Game

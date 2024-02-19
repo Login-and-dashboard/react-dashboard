@@ -36,6 +36,7 @@ const Login = () => {
     const urlencoded = new URLSearchParams();
     urlencoded.append("token", accessToken);
     urlencoded.append("nftId", usableNfts[0].non_fungible_id.substring(1, usableNfts[0].non_fungible_id.length - 1));
+    urlencoded.append("walletAddress", accounts[0].address);
 
     const requestOptions = {
       method: 'POST',
@@ -46,7 +47,7 @@ const Login = () => {
 
     await fetch("https://snapper-fit-snipe.ngrok-free.app/v1/account/updatenft", requestOptions);
     setLoggedIn(true);
-  }, [usableNfts, accessToken, setLoggedIn])
+  }, [usableNfts, accessToken, setLoggedIn, accounts])
 
   return (
     <section className={styles.mainWrapper}>

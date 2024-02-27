@@ -15,6 +15,7 @@ const Login = () => {
   const { search } = useLocation();
   const accessToken = search.substring(7);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [error, setError] = useState(false);
 
   const nfts = useMemo(() => {
     const addr = "resource_tdx_2_1n23hu0ff96fuxhjlu9y6agtmufxhra4835xlx3p752pvlk7skhqg87";
@@ -45,8 +46,13 @@ const Login = () => {
       redirect: 'follow'
     };
 
-    await fetch("https://snapper-fit-snipe.ngrok-free.app/v1/account/updatenft", requestOptions);
-    setLoggedIn(true);
+    const res = await fetch("https://snapper-fit-snipe.ngrok-free.app/v1/account/updatenft", requestOptions);
+    const text = await res.text();
+    if (text.includes("Error")) {
+      setError(true);
+    } else {
+      setLoggedIn(true);
+    }
   }, [usableNfts, accessToken, setLoggedIn, accounts])
 
   return (
@@ -62,6 +68,7 @@ const Login = () => {
               <p className={styles.text}>
                 {accounts.length ? `Found ${nfts.length} FiatFighterZ NFTs with ${usableNfts.length} usable NFTs` : ""}
               </p>
+              {error && <p className={styles.text}>Internal Server Error. Please try another wallet or try again later.</p>}
               {(usableNfts.length && !accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/FiatFighterz.zip"><button
                 className={[styles.button, styles.connectWallet].join(" ")}
               >

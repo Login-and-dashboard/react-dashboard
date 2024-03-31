@@ -18,7 +18,7 @@ const Login = () => {
   const [error, setError] = useState(false);
 
   const nfts = useMemo(() => {
-    const addr = "resource_tdx_2_1n23hu0ff96fuxhjlu9y6agtmufxhra4835xlx3p752pvlk7skhqg87";
+    const addr = "resource_tdx_2_1n2ru3vnlxh8q09k7rwaqdt3qf3v372rk6cj8tyz6h6fw4y3wmxm0df";
     if (accounts.length && accounts[0].nonFungibleTokens && accounts[0].nonFungibleTokens[addr]) {
       return accounts[0].nonFungibleTokens[addr];
     }

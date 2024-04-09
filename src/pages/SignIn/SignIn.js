@@ -17,18 +17,6 @@ const Login = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState(false);
 
-  const nfts = useMemo(() => {
-    const addr = "resource_tdx_2_1nfca0340h83qva9cw2078ynm8yfv3s5e9cjg5p2aene66z26600zzy";
-    if (accounts.length && accounts[0].nonFungibleTokens && accounts[0].nonFungibleTokens[addr]) {
-      return accounts[0].nonFungibleTokens[addr];
-    }
-    return [];
-  }, [accounts])
-
-  const usableNfts = useMemo(() => {
-    return nfts.filter((nft) => !!nft.data.programmatic_json.fields.find(field => field.field_name === "usable").value);
-  }, [nfts]);
-
   const login = useCallback(async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -36,7 +24,6 @@ const Login = () => {
 
     const urlencoded = new URLSearchParams();
     urlencoded.append("token", accessToken);
-    urlencoded.append("nftId", usableNfts[0].non_fungible_id.substring(1, usableNfts[0].non_fungible_id.length - 1));
     urlencoded.append("walletAddress", accounts[0].address);
 
     const requestOptions = {
@@ -53,7 +40,7 @@ const Login = () => {
     } else {
       setLoggedIn(true);
     }
-  }, [usableNfts, accessToken, setLoggedIn, accounts])
+  }, [accessToken, setLoggedIn, accounts])
 
   return (
     <section className={styles.mainWrapper}>
@@ -65,16 +52,13 @@ const Login = () => {
         <div className={styles.wrapper}>
           <div className={styles.walletContainer}>
             {!loggedIn ? <> <ConnectButton />
-              <p className={styles.text}>
-                {accounts.length ? `Found ${nfts.length} FiatFighterZ NFTs with ${usableNfts.length} usable NFTs` : ""}
-              </p>
               {error && <p className={styles.text}>Internal Server Error. Please try another wallet or try again later.</p>}
-              {(usableNfts.length && !accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/FiatFighterz.zip"><button
+              {(!accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/FiatFighterz.zip"><button
                 className={[styles.button, styles.connectWallet].join(" ")}
               >
                 Download Game
               </button></a> : <></>}
-              {(usableNfts.length && accessToken.length) ? <button
+              {(accessToken.length) ? <button
                 onClick={() => { login(); }}
                 className={[styles.button, styles.connectWallet].join(" ")}
               >

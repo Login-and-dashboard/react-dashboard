@@ -34,22 +34,7 @@ const useWithTokens = (stateApi) => {
                     }
                   )
                 ).then((data) => {
-                  const addr = "resource_tdx_2_1nfca0340h83qva9cw2078ynm8yfv3s5e9cjg5p2aene66z26600zzy";
-                  if (data.nonFungibleTokens && data.nonFungibleTokens[addr]) {
-                    return new Promise((resolve) => {
-                      stateApi.getNonFungibleData(addr, data.nonFungibleTokens[addr].map(data => data.id)).then(metadata => {
-                        resolve({
-                          ...data,
-                          nonFungibleTokens: {
-                            ...data.nonFungibleTokens,
-                            [addr]: metadata
-                          }
-                        })
-                      })
-                    })
-                  } else {
-                    return data;
-                  }
+                  return data;
                 })
             )
           )

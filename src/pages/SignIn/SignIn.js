@@ -53,7 +53,7 @@ const Login = () => {
           <div className={styles.walletContainer}>
             {!loggedIn ? <> <ConnectButton />
               {error && <p className={styles.text}>Internal Server Error. Please try another wallet or try again later.</p>}
-              {(!accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/FiatFighterz.zip"><button
+              {(!accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/Launcher.exe"><button
                 className={[styles.button, styles.connectWallet].join(" ")}
               >
                 Download Game

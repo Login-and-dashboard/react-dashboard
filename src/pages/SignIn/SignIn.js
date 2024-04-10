@@ -15,7 +15,7 @@ const Login = () => {
   const { search } = useLocation();
   const accessToken = search.substring(7);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const login = useCallback(async () => {
     const myHeaders = new Headers();
@@ -36,7 +36,9 @@ const Login = () => {
     const res = await fetch("https://snapper-fit-snipe.ngrok-free.app/v1/account/updatenft", requestOptions);
     const text = await res.text();
     if (text.includes("Error")) {
-      setError(true);
+      setError("Internal Server Error. Please try another wallet or try again later.");
+    } else if (!text.includes("Success")) {
+      setError("Token expired, please return to the game click back button and login again.");
     } else {
       setLoggedIn(true);
     }
@@ -52,7 +54,7 @@ const Login = () => {
         <div className={styles.wrapper}>
           <div className={styles.walletContainer}>
             {!loggedIn ? <> <ConnectButton />
-              {error && <p className={styles.text}>Internal Server Error. Please try another wallet or try again later.</p>}
+              {error.length && <p className={styles.text}>{error}</p>}
               {(!accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/Launcher.exe"><button
                 className={[styles.button, styles.connectWallet].join(" ")}
               >

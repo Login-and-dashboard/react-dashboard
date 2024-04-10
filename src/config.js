@@ -2,7 +2,7 @@ import { RadixNetworkConfig } from '@radixdlt/radix-dapp-toolkit'
 
 const network =
   RadixNetworkConfig[
-  "Stokenet"
+  "Mainnet"
   ]
 
 if (!network) throw new Error('Invalid network')

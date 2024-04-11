@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const radixDappToolkit = RadixDappToolkit({
       networkId: config.network.networkId,
-      dAppDefinitionAddress: config.dAppDefinitionAddress,
+      dAppDefinitionAddress: "account_rdx12x2n7jr3cg5dduen9e9sshlkw7uz962jr05erlcxp56pkt04rzv476",
       logger: createLogger(2),
     })
 

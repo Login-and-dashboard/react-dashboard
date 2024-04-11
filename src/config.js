@@ -11,7 +11,7 @@ if (!network) throw new Error('Invalid network')
 const gumballNetworkConfig = {
   Mainnet: {
     dAppDefinitionAddress:
-      'account_rdx12xuhw6v30chdkhcu7qznz9vu926vxefr4h4tdvc0mdckg9rq4afx9t',
+      'account_rdx12x2n7jr3cg5dduen9e9sshlkw7uz962jr05erlcxp56pkt04rzv476',
     addresses: {
       sugarOraclePackageAddress:
         'package_rdx1pk5scajc6xaz9xdlhpunj5vula9wt9mjara8a7ck7lrpm770698ygs',

@@ -55,7 +55,7 @@ const Login = () => {
           <div className={styles.walletContainer}>
             {!loggedIn ? <> <ConnectButton />
               {error.length && <p className={styles.text}>{error}</p>}
-              {(!accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/Launcher.exe"><button
+              {(!accessToken.length) ? <a href="https://radixdlt-nft.s3.amazonaws.com/game/launcher.exe"><button
                 className={[styles.button, styles.connectWallet].join(" ")}
               >
                 Download Game
